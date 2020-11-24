@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Resultado } from '../models/resultado';
+import { TokenService } from '../services/token.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-test',
@@ -7,9 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-isTesting = false;
-isTest = true;
-isForm1 = false;
+isTesting = true;
+isForm1 = true;
 isForm2 = false;
 isForm3 = false;
 isForm4 = false;
@@ -19,6 +23,10 @@ isForm7 = false;
 suma = 0;
 respuesta: any = {};
 resultado= false;
+private newresultado: any = {};
+nivel: string;
+isLogin = false;
+nombre: string;
 
 escalas = {
 tristeza: [
@@ -506,16 +514,19 @@ sexo: [
   };
 
 
-  constructor() { }
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit() {
-  }
 
-    test(){
+   if (this.tokenService.getToken()) {
 
-    this.isTest = false;
-    this.isTesting = true;
-    this.isForm1 = true;
+      this.isLogin = true;
+      this.nombre = this.tokenService.getNombre();
+
+    } else {
+    
+     this.router.navigate(['']);
+    }
 
   }
 
@@ -578,10 +589,39 @@ sexo: [
   guardarSiete(){
     this.suma += Number(this.respuesta.resp_4) + Number(this.respuesta.resp_5) + Number(this.respuesta.resp_6);
     console.log(this.suma);
+    const id = this.tokenService.getId();
+
+      if (Number(this.suma) <= 13) {
+       this.nivel = 'No depresion';
+      } else if ((Number(this.suma) > 14) && (Number(this.suma) <= 19)) {
+       this.nivel = 'Depresion Leve';
+      } else if ((Number(this.suma) > 20) && (Number(this.suma) <= 28)) {
+       this.nivel = 'Depresion Moderada';
+      }else if ((Number(this.suma) > 29) && (Number(this.suma) <= 63)) {
+       this.nivel = 'Depresion grave';
+      }
+
+    this.newresultado = new Resultado(this.suma, this.nivel, id);
+
+    this.authService.resultado(this.newresultado).subscribe(data => {
+      console.log(this.newresultado);
+    },
+      (error: any) => {
+        console.log('ERROR');
+      }
+    );
 
     this.respuesta = {};
     this.isForm7 = false;
     this.isTesting = false;
     this.resultado = true;
+    this.nivel = '';
   }
+
+ logOut() {
+    this.tokenService.logOut();
+    this.isLogin = false;
+    window.location.reload();
+    }
+
 }

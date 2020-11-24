@@ -1,5 +1,14 @@
 <div *ngIf="isLogged; else loggedOut">
-  Has iniciado sesión como: {{ rol }}
+
+<div *ngIf="authority === 'user'" class="jumbotron container">
+  <h1 class="display-4">¡Bienvenido!</h1>
+  <p class="lead">{{nombre}}</p>
+  <hr class="my-4">
+  <p>Iniciaste sesión con el Instituto Tecnológico Superior de Escárcega.</p>
+  <p>Lee las frases de cada grupo antes de hacer su eleccion y marca la que describa. ¿Cómo te has setido en ésta última semana, incluso hoy?</p> 
+  <a class="btn btn-primary btn-lg btn-block" routerLink="/test" role="button">Comenzar Test</a>
+</div>
+
 </div>
 
 <ng-template #loggedOut>

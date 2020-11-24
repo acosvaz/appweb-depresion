@@ -1,171 +1,164 @@
 
-<div *ngIf="isTest" class="jumbotron container">
-  <h1 class="display-4">¡Bienvenido!</h1>
-  <p class="lead">Nicolas</p>
-  <hr class="my-4">
-  <p>Iniciaste sesión con el Instituto Tecnológico Superior de Escárcega.</p>
-  <p>Lee las frases de cada grupo antes de hacer su eleccion y marca la que describa. ¿Cómo te has setido en ésta última semana, incluso hoy?</p>	
-  <a class="btn btn-primary btn-lg btn-block" role="button" (click)="test()">Comenzar Test</a>
-</div>
-
 <div *ngIf="isTesting" class="jumbotron container">
-  <p class="lead">Nicolas</p>
+  <h3>{{nombre}}</h3>
   <hr class="my-4">
 
-<form *ngIf="isForm1" name="respuesta" #f="ngForm" (ngSubmit)="guardar()">
+<form *ngIf="isForm1" name="respuesta" #f="ngForm" (ngSubmit)="guardar()" novalidate>
+
  <div class="form-group">
-    <select multiple class="form-control" name="resp_1" [(ngModel)]="respuesta.resp_1" #resp_1="ngModel" id="exampleFormControlSelect2" size="4">
-      <option *ngFor="let s of escalas.tristeza" [value]="s.valor" >{{s.letra}}</option>
+    <select multiple class="form-control" name="resp_1" [(ngModel)]="respuesta.resp_1" #resp_1="ngModel" size="4">
+      <option *ngFor="let s of escalas.tristeza" [value]="s.valor">{{s.letra}}</option>
     </select>
   </div>
+
  <div class="form-group">
-    <select multiple class="form-control" name="resp_2" [(ngModel)]="respuesta.resp_2" #resp_2="ngModel" id="exampleFormControlSelect2" size="4">
-    	<option *ngFor="let s of escalas.pesimismo" [value]="s.valor" >{{s.letra}}</option>
+    <select multiple class="form-control" name="resp_2" [(ngModel)]="respuesta.resp_2" #resp_2="ngModel" id="exampleFormControlSelect2" size="4" required>
+    	<option *ngFor="let s of escalas.pesimismo" [value]="s.valor">{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_3" [(ngModel)]="respuesta.resp_3" #resp_3="ngModel" id="exampleFormControlSelect2" size="4">
-    	<option *ngFor="let s of escalas.fracaso" [value]="s.valor" >{{s.letra}}</option>
+    <select multiple class="form-control" name="resp_3" [(ngModel)]="respuesta.resp_3" #resp_3="ngModel" id="exampleFormControlSelect2" size="4" required>
+    	<option *ngFor="let s of escalas.fracaso" [value]="s.valor">{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm2" name="respuesta" #f="ngForm" (ngSubmit)="guardarDos()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.placer" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.culpa" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.castigo" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm3" name="respuesta" #f="ngForm" (ngSubmit)="guardarTres()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.disconformidad" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.autocritica" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.suicida" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm4" name="respuesta" #f="ngForm" (ngSubmit)="guardarCuatro()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.llanto" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4"required>
     	<option *ngFor="let s of escalas.agitacion" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.interes" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm5" name="respuesta" #f="ngForm" (ngSubmit)="guardarCinco()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.indecision" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.desvalorizacion" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.energia" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm6" name="respuesta" #f="ngForm" (ngSubmit)="guardarSeis()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.sueno" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.irritabilidad" [value]="s.valor">{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.apetito" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 
 <form *ngIf="isForm7" name="respuesta" #f="ngForm" (ngSubmit)="guardarSiete()">
  <div class="form-group">
-    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_4" [(ngModel)]="respuesta.resp_4" #resp_4="ngModel" id="exampleFormControlSelect2" size="4" required>
       <option *ngFor="let s of escalas.concentracion" [value]="s.valor" >{{s.letra}}</option>
     </select>
   </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_5" [(ngModel)]="respuesta.resp_5" #resp_5="ngModel" id="exampleFormControlSelect2" size="4" required>
     	<option *ngFor="let s of escalas.cansancio" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2" size="4">
+    <select multiple class="form-control" name="resp_6" [(ngModel)]="respuesta.resp_6" #resp_6="ngModel" id="exampleFormControlSelect2"size="4" required>
     	<option *ngFor="let s of escalas.sexo" [value]="s.valor" >{{s.letra}}</option>
     </select>
  </div>
  <div class="form-group">
-    <button type="submit" class="btn btn-primary mb-3">Siguiente</button>
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="!f.valid">Siguiente</button>
  </div>
 </form>
 </div>
 
 <div *ngIf="resultado" class="jumbotron container">
   <h1 class="display-4">Resultado</h1>
-  <p class="lead">Nicolas</p>
+  <p class="lead">{{nombre}}</p>
   <hr class="my-4">
   <p>Puntos obtenidos de acuerdo al rango establecido por el Inventario de Beck (BDII).</p>
   <p>Tu resultado es: {{suma}} pts.</p>	
-  <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Salir</a>
+  <a class="btn btn-primary btn-lg btn-block" (click)="logOut()" role="button">Salir</a>
 </div>
 

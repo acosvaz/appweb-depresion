@@ -17,10 +17,10 @@ export class NuevoUsuario {
         this.username = username;
         this.password = password;
         this.matricula = matricula;
-        this.carrera = edad;
-        this.semestre = carrera;
+        this.carrera = carrera;
+        this.semestre = semestre;
         this.grupo = grupo;
-        this.edad = semestre;
+        this.edad = edad;
         this.sexo = sexo;
        // this.created_at = new Date().getDate();
     }

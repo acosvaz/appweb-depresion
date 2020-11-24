@@ -1,7 +1,7 @@
 export class JwtModel {
 	id?: number;
-    token: string;
-    nombre: string;
-    rol: string;
     username: string;
+    rol: string;
+    nombre: string;
+    token: string;
 }

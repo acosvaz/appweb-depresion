@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   rol: string;
   id: number;
   errorMsg = 'Datos incorrectos';
+  authority: string;
+  nombre: string;
 
   constructor(
     private authService: AuthService,
@@ -28,18 +30,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
       if (this.tokenService.getToken()) {
-   //   comprobamos los valores del token
-      console.log('Nombre: ' + this.tokenService.getUserName());
-      console.log('Token: ' + this.tokenService.getToken());
-      console.log('Rol: ' + this.tokenService.getRol());
-      console.log('Id: '+ Number(this.tokenService.getId()));
 
       this.nombreUser = this.tokenService.getUserName();
       this.isLogged = true;
       this.isLoginFail = false;
       this.rol = this.tokenService.getRol();
       this.id = Number(this.tokenService.getId());
-  }
+      this.nombre = this.tokenService.getNombre();
+
+       if (this.rol === 'admin') {
+          this.authority = 'admin';
+         // return false;
+        } else {
+        this.authority = 'user';
+        //return true;
+        }
+
+      }
   }
 
     onLogin() {
@@ -50,11 +57,8 @@ export class LoginComponent implements OnInit {
       this.tokenService.setUserName(data.username);
       this.tokenService.setRol(data.rol);
       this.tokenService.setToken(data.token);
+      this.tokenService.setNombre(data.nombre);
       
-      
-
-      this.isLogged = true;
-      this.isLoginFail = false;
       this.rol = this.tokenService.getRol();
       this.id = Number(this.tokenService.getId());
       

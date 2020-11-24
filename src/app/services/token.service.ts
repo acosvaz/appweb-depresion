@@ -4,6 +4,7 @@ const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUserName';
 const ROL_KEY = 'AutRol';
 const ID_KEY = '1';
+const NOMBRE_KEY = 'Sin nombre';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,15 @@ export class TokenService {
 
   public getRol(): string {
     return sessionStorage.getItem(ROL_KEY);
+  }
+
+  public setNombre(nombre: string): void {
+    window.sessionStorage.removeItem(NOMBRE_KEY);
+    window.sessionStorage.setItem(NOMBRE_KEY, nombre);
+  }
+
+  public getNombre(): string {
+    return sessionStorage.getItem(NOMBRE_KEY);
   }
 
   public logOut(): void {
