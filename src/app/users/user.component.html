@@ -1,3 +1,117 @@
-<p>
-  user works!
-</p>
+<div class="container">
+    <h3 align="center">Estadisticas Depresion ITSE</h3>
+    <br>
+    <div class="row">
+       <div class="col">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">No Depresion</th>
+                        <th scope="col">Depresion Leve</th>
+                        <th scope="col">Depresion Moderada</th>
+                        <th scope="col">Depresion Grave</th>
+                    </tr>
+                </thead >
+                <tbody class="table-secondary">
+                    <tr>
+                        <td>{{this.porcents.NoDepresion}}%</td>
+                        <td>{{this.porcents.DepresionLeve}}%</td>
+                        <td>{{this.porcents.DepresionModerada}}%</td>
+                        <td>{{this.porcents.DepresionGrave}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col" style="max-width: 450px;">
+            <h5 align="center">% de la poblacion total (Sexo)</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Niveles</th>
+                        <th scope="col">Hombre</th>
+                        <th scope="col">Mujer</th>
+                    </tr>
+                </thead>
+                <tbody class="table-secondary">
+                    <tr>
+                        <td>No Depresion</td>
+                        <td>{{sno.Hombre}}</td>
+                        <td>{{sno.Mujer}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Leve</td>
+                        <td>{{sleve.Hombre}}</td>
+                        <td>{{sleve.Mujer}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Moderada</td>
+                        <td>{{smoderada.Hombre}}</td>
+                        <td>{{smoderada.Mujer}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Grave</td>
+                        <td>{{sgrave.Hombre}}</td>
+                        <td>{{sgrave.Mujer}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h5 align="center">% de la poblacion total (Carrera)</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Niveles</th>
+                        <th scope="col">ISC</th>
+                        <th scope="col">IER</th>
+                        <th scope="col">IIA</th>
+                        <th scope="col">LA</th>
+                        <th scope="col">LT</th>
+                        <th scope="col">LG</th>
+                    </tr>
+                </thead>
+                <tbody class="table-secondary">
+                    <tr>
+                        <td>No Depresion</td>
+                        <td>{{this.cno.isc}}</td>
+                        <td>{{this.cno.ier}}</td>
+                        <td>{{this.cno.iia}}</td>
+                        <td>{{this.cno.la}}</td>
+                        <td>{{this.cno.lt}}</td>
+                        <td>{{this.cno.lg}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Leve</td>
+                        <td>{{this.cleve.isc}}</td>
+                        <td>{{this.cleve.ier}}</td>
+                        <td>{{this.cleve.iia}}</td>
+                        <td>{{this.cleve.la}}</td>
+                        <td>{{this.cleve.lt}}</td>
+                        <td>{{this.cleve.lg}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Moderada</td>
+                        <td>{{this.cmoderado.isc}}</td>
+                        <td>{{this.cmoderado.ier}}</td>
+                        <td>{{this.cmoderado.iia}}</td>
+                        <td>{{this.cmoderado.la}}</td>
+                        <td>{{this.cmoderado.lt}}</td>
+                        <td>{{this.cmoderado.lg}}</td>
+                    </tr>
+                    <tr>
+                        <td>Depresion Grave</td>
+                        <td>{{this.cgrave.isc}}</td>
+                        <td>{{this.cgrave.ier}}</td>
+                        <td>{{this.cgrave.iia}}</td>
+                        <td>{{this.cgrave.la}}</td>
+                        <td>{{this.cgrave.lt}}</td>
+                        <td>{{this.cgrave.lg}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

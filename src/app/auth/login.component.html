@@ -1,4 +1,7 @@
 <div *ngIf="isLogged; else loggedOut">
+<div *ngIf="authority === 'admin'">
+<app-admin></app-admin>
+</div>
 
 <div *ngIf="authority === 'user'" class="jumbotron container">
   <h1 class="display-4">¡Bienvenido!</h1>

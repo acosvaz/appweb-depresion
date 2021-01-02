@@ -18,7 +18,10 @@ aria-label="Toggle navigation">
         <a class="nav-link" routerLink="login">Iniciar Sesión</a>
       </li>
       <li *ngIf="authority === 'admin'" class="nav-item">
-          <a class="nav-link" routerLink="admin">Panel de Admin</a>
+          <a class="nav-link" routerLink="admin">Tabla General</a>
+      </li>
+      <li *ngIf="authority === 'admin'" class="nav-item">
+          <a class="nav-link" routerLink="user">Estadisticas</a>
       </li>
       <li *ngIf="authority === 'user'" class="nav-item">
           <a class="nav-link" routerLink="test">Test</a>

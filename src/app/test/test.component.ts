@@ -592,13 +592,13 @@ sexo: [
     const id = this.tokenService.getId();
 
       if (Number(this.suma) <= 13) {
-       this.nivel = 'No depresion';
-      } else if ((Number(this.suma) > 14) && (Number(this.suma) <= 19)) {
+       this.nivel = 'No Depresion';
+      } else if ((Number(this.suma) >= 14) && (Number(this.suma) <= 19)) {
        this.nivel = 'Depresion Leve';
-      } else if ((Number(this.suma) > 20) && (Number(this.suma) <= 28)) {
+      } else if ((Number(this.suma) >= 20) && (Number(this.suma) <= 28)) {
        this.nivel = 'Depresion Moderada';
-      }else if ((Number(this.suma) > 29) && (Number(this.suma) <= 63)) {
-       this.nivel = 'Depresion grave';
+      }else if ((Number(this.suma) >= 29) && (Number(this.suma) <= 63)) {
+       this.nivel = 'Depresion Grave';
       }
 
     this.newresultado = new Resultado(this.suma, this.nivel, id);

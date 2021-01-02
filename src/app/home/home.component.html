@@ -1,11 +1,33 @@
 <div *ngIf="info.token; else loggedOut">
   <div class="container">
-    <p><strong>Tu nombre de usuario: </strong>{{ info.nombreUsuario}}</p>
-    <p><strong>Tus privilegios: </strong>{{ info.authorities}}</p>
+    <!-- Jumbotron -->
+<div class="jumbotron text-center">
+
+  <!-- Card image -->
+  <div class="view overlay my-3 waves-light" mdbWavesEffect>
+    <img style="width: 50%;" src="assets/home.jpg" class="img-fluid" alt="">
+  </div>
+
+  <h5 class="indigo-text h5 mb-4">Plataforma web para la deteccion de alumnos subclinicamente depresivos a traves de la aplicacion de tamizajes de Beck (BDII)</h5>
+
+</div>
+<!-- Jumbotron -->
   </div>
 </div>
 <ng-template #loggedOut>
-  <div class="container">
-    No has iniciado sesión
+
+<div class="container">
+    <!-- Jumbotron -->
+<div class="jumbotron text-center">
+
+  <!-- Card image -->
+  <div class="view overlay my-3 waves-light" mdbWavesEffect>
+    <img style="width: 50%;" src="assets/home.jpg" class="img-fluid" alt="">
+  </div>
+
+  <h5 class="indigo-text h5 mb-4">Plataforma web para la deteccion de alumnos subclinicamente depresivos a traves de la aplicacion de tamizajes de Beck (BDII)</h5>
+
+</div>
+<!-- Jumbotron -->
   </div>
 </ng-template>

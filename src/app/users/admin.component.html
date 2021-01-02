@@ -1,3 +1,58 @@
-<p>
-  admin works!
-</p>
+
+<div class="container">
+    <form name="form" #f="ngForm" (ngSubmit)="onBusqueda()" novalidate>
+      <div class="form-row mb-4">
+        <div class="col" style="max-width: 150px;">
+            <label for="fecha-inicio">Fecha inicio:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" name="fecha_inicio" type="date" [(ngModel)]="form.fecha_inicio" #fecha_inicio=ngModel>
+        </div>
+        <div class="col" style="max-width: 100px;"></div>
+        <div class="col" style="max-width: 150px;">
+            <label for="fecha-final">Fecha final:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" name="fecha_final" type="date" [(ngModel)]="form.fecha_final" #fecha_final=ngModel>
+        </div>
+        <div class="col" style="max-width: 100px;"></div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary mb-3" >Buscar</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+<div class="container">
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Matricula</th>
+        <th scope="col">Carrera</th>
+        <th scope="col">Semestre</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Elaboracion</th>
+        <th scope="col">Nivel</th>
+        <th scope="col">Pts</th>
+      </tr>
+    </thead>
+    <tbody class="table-secondary">
+      <tr *ngFor="let alumno of alumnos">
+        <td>{{alumno.nombre}}</td>
+        <td>{{alumno.matricula}}</td>
+        <td>{{alumno.carrera}}</td>
+        <td>{{alumno.semestre}}</td>
+        <td>{{alumno.grupo}}</td>
+        <td>{{alumno.edad}}</td>
+        <td>{{alumno.sexo}}</td>
+        <td>{{alumno.elaboracion}}</td>
+        <td>{{alumno.nivel}}</td>
+        <td>{{alumno.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
