@@ -244,7 +244,7 @@ llanto: [
     },
     {
       id: 2,
-      letra: 'b) No lloro más de lo que solía hacerlo.',
+      letra: 'b) Lloro más de lo que solía hacerlo.',
       valor: '1',
     },
     {

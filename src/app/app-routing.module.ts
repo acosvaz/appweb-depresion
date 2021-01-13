@@ -15,7 +15,7 @@ const routes: Routes = [
  {path: 'test', component: TestComponent},
  {path: 'admin', component: AdminComponent},
  {path: 'user', component: UserComponent},
- {path: '**', redirectTo: 'home', pathMatch: 'full'},
+ {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
