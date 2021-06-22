@@ -15,7 +15,9 @@ const cabecera = {headers: new HttpHeaders({'Content-Type': 'application/json'})
 })
 export class AuthService {
 
-  private authURL = 'http://localhost/webservice2/api/';
+  //private authURL = 'https://localhost/webservice2/api/';
+  private authURL = 'https://mentoreasy.com.mx/api/';
+
 
   constructor(private httpClient: HttpClient) { }
 

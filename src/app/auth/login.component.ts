@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
       if (this.tokenService.getToken()) {
 
       this.nombreUser = this.tokenService.getUserName();
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
       }
   }
 
-    onLogin() {
+    onLogin(): void {
     this.usuario = new LoginUsuario(this.form.username, this.form.password);
 
     this.authService.login(this.usuario).subscribe(data => {
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
       
       this.rol = this.tokenService.getRol();
       this.id = Number(this.tokenService.getId());
-      
+
       window.location.reload();
     },
       (err: any) => {
